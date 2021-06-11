@@ -15,18 +15,27 @@ namespace ApiOnlineShop.Repositories
             _onlineShopContext = onlineShopContext;
         }
 
-        public async Task<bool> AddProduct(Product producto)
+        public async Task AddProduct(Product product)
         {
-            await _onlineShopContext.Products.AddAsync(producto);
+            await _onlineShopContext.Products.AddAsync(product);
 
-            return await SaveChanges();
+            await SaveChanges();
         }
 
-        public async Task<bool> DeleteProduct(Product producto)
+        public async Task DeleteProduct(Product product)
         {
-            _onlineShopContext.Products.Remove(producto);
+            _onlineShopContext.Products.Remove(product);
 
-            return await SaveChanges();
+            await SaveChanges();
+        }
+
+        public async Task<bool> Exists(string code)
+        {
+            var product = await _onlineShopContext.Products.FindAsync(code);
+
+            if (product == null) return false;
+
+            return true;
         }
 
         public async Task<Product> GetProduct(string code)
@@ -43,16 +52,16 @@ namespace ApiOnlineShop.Repositories
             return products;
         }
 
-        public async Task<bool> UpdateProduct(Product producto)
+        public async Task UpdateProduct(Product product)
         {
-            _onlineShopContext.Products.Remove(producto);
+            _onlineShopContext.Products.Update(product);
 
-            return await SaveChanges();
+            await SaveChanges();
         }
 
-        private async Task<bool> SaveChanges()
+        private async Task SaveChanges()
         {
-            return await _onlineShopContext.SaveChangesAsync() > 0;
+            await _onlineShopContext.SaveChangesAsync();
         }
     }
 }

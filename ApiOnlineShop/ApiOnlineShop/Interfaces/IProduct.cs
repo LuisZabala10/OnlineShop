@@ -8,8 +8,9 @@ namespace ApiOnlineShop.Interfaces
     {
         Task<IEnumerable<Product>> GetProducts();
         Task<Product> GetProduct(string code);
-        Task<bool> UpdateProduct(Product producto);
-        Task<bool> DeleteProduct(Product producto);
-        Task<bool> AddProduct(Product producto);
+        Task UpdateProduct(Product product);
+        Task DeleteProduct(Product product);
+        Task AddProduct(Product product);
+        Task<bool> Exists(string code);
     }
 }

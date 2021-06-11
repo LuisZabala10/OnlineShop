@@ -1,14 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ApiOnlineShop.Entities
+namespace ApiOnlineShop.Dtos
 {
-    public class Product
+    public class ProductForCreationDto
     {
-        [Key]
-        [Required]
-        public string Code { get; set; }
-
         [Required(ErrorMessage = "name required.")]
         [MaxLength(80)]
         public string Name { get; set; }
@@ -18,8 +13,5 @@ namespace ApiOnlineShop.Entities
 
         [Required(ErrorMessage = "Stock required.")]
         public int Stock { get; set; }
-
-        [Required]
-        public DateTime CreationDate { get; set; }
     }
 }
