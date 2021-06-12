@@ -108,26 +108,11 @@ namespace ApiOnlineShop.Controllers
 
                 if (productToUpdate == null) return NotFound();
 
-                if(product.Stock != null)
-                {
-                    //---------------------------------------------------------------------------------//
-                    //si el stock no es null entonces el usuario esta actualizando el stock del producto
-                    //---------------------------------------------------------------------------------//
-
-                    if (!ValidateStock(product.Stock.Value)) return BadRequest("The product stock must be greater or iqual to 0");
-
-                    productToUpdate.Stock += product.Stock.Value;
-                    await _productRepository.UpdateProduct(productToUpdate);
-                    return NoContent();
-                }
-                else
-                {
-                    productToUpdate.Name = product.Name;
-                    productToUpdate.Price = product.Price;
-                    productToUpdate.Description = product.Description;
-                    await _productRepository.UpdateProduct(productToUpdate);
-                    return NoContent();
-                }
+                productToUpdate.Name = product.Name;
+                productToUpdate.Price = product.Price;
+                productToUpdate.Description = product.Description;
+                await _productRepository.UpdateProduct(productToUpdate);
+                return NoContent();
             }
             catch (Exception ex)
             {
