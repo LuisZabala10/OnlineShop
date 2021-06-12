@@ -8,6 +8,10 @@ namespace ApiOnlineShop.Dtos
         [MaxLength(80)]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "description required.")]
+        [MaxLength(100)]
+        public string Description { get; set;}
+
         [Required(ErrorMessage = "Price required.")]
         public double Price { get; set; }
 

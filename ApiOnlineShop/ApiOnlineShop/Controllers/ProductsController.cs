@@ -77,6 +77,7 @@ namespace ApiOnlineShop.Controllers
                 {
                     Code = code,
                     Name = product.Name,
+                    Description = product.Description,
                     Price = product.Price,
                     Stock = product.Stock,
                     CreationDate = DateTime.Now
@@ -123,6 +124,7 @@ namespace ApiOnlineShop.Controllers
                 {
                     productToUpdate.Name = product.Name;
                     productToUpdate.Price = product.Price;
+                    productToUpdate.Description = product.Description;
                     await _productRepository.UpdateProduct(productToUpdate);
                     return NoContent();
                 }
