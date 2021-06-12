@@ -17,20 +17,20 @@
             </div>
             <div class="col-md-4 mb-4">
                 <label for="name" class="form-label">Cantidad</label>
-                <input type="number" class="form-control" formControlName="stock" id="description">
-                <span class="text-danger" *ngIf="formInventory.get('stock')!.hasError('required') 
-                    && (formInventory.get('stock')!.dirty 
-                    || formInventory.get('stock')!.touched)">
+                <input type="number" class="form-control" formControlName="amount" id="description">
+                <span class="text-danger" *ngIf="formInventory.get('amount')!.hasError('required') 
+                    && (formInventory.get('amount')!.dirty 
+                    || formInventory.get('amount')!.touched)">
                     Debe ingresar una cantidad!
                 </span>
-                <span class="text-danger" *ngIf="formInventory.get('stock')!.hasError('pattern') 
-                    && (formInventory.get('stock')!.dirty 
-                    || formInventory.get('stock')!.touched)">
+                <span class="text-danger" *ngIf="formInventory.get('amount')!.hasError('pattern') 
+                    && (formInventory.get('amount')!.dirty 
+                    || formInventory.get('amount')!.touched)">
                     Debe ingresar una cantidad entera!
                 </span>
             </div>
             <div class="col-md-12">
-                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                <button type="submit" [disabled]="formInventory.invalid" class="btn btn-primary btn-block">Guardar</button>
             </div>
         </form>
     </div>

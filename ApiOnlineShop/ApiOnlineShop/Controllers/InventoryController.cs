@@ -19,17 +19,17 @@ namespace ApiOnlineShop.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateInventory(InventoryForUpdateDto updateDto)
+        public async Task<ActionResult> UpdateInventory(InventoryForUpdateDto inventory)
         {
             try
             {
-                var productToUpdateStock = await _productRepository.GetProduct(updateDto.Code);
+                var productToUpdateStock = await _productRepository.GetProduct(inventory.Code);
 
                 if (productToUpdateStock == null) return NotFound();
 
                 if (productToUpdateStock.Stock <= 0) return BadRequest("The amount of stock must be greater than 0.");
 
-                productToUpdateStock.Stock += updateDto.Amount;
+                productToUpdateStock.Stock += inventory.Amount;
 
                 await _productRepository.UpdateProduct(productToUpdateStock);
 
