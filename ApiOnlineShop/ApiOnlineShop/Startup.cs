@@ -26,6 +26,13 @@ namespace ApiOnlineShop
 
             services.AddScoped<IProduct, ProductRepository>();
 
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("")
+
+
+            //});
+
             services.AddControllers();
         }
 
