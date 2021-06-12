@@ -1,0 +1,53 @@
+<div class="card m-auto mt-4" style="width: 70%;">
+    <div class="card-header">
+        <h5 class="card-title">Nuevo producto</h5>
+    </div>
+    <div class="card-body">
+        <form class="row m-auto" [formGroup]="formProduct" (ngSubmit)="save()">
+            <div class="col-md-12 mb-2">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" formControlName="name" id="name">
+                <span class="text-danger" *ngIf="formProduct.get('name')!.hasError('required') 
+                    && (formProduct.get('name')!.dirty 
+                    || formProduct.get('name')!.touched)">
+                    Debe ingresar el nombre del producto!
+                </span>
+            </div>
+            <div class="col-md-12 mb-2">
+                <label for="description" class="form-label">Descripción</label>
+                <input type="text" class="form-control" formControlName="description" id="description">
+                <span class="text-danger" *ngIf="formProduct.get('description')!.hasError('required') 
+                    && (formProduct.get('description')!.dirty 
+                    || formProduct.get('description')!.touched)">
+                    Debe ingresar una descripción!
+                </span>
+            </div>
+            <div class="col-md-6 mb-2">
+                <label for="price" class="form-label">Precio</label>
+                <input type="number" class="form-control" formControlName="price" id="price">
+                <span class="text-danger" *ngIf="formProduct.get('price')!.hasError('required') 
+                    && (formProduct.get('price')!.dirty 
+                    || formProduct.get('price')!.touched)">
+                    Debe ingresar el precio!
+                </span>
+            </div>
+            <div class="col-md-6 mb-4">
+                <label for="stock" class="form-label">stock</label>
+                <input type="number" class="form-control" formControlName="stock" id="stock">
+                <span class="text-danger" *ngIf="formProduct.get('stock')!.hasError('required') 
+                    && (formProduct.get('stock')!.dirty 
+                    || formProduct.get('stock')!.touched)">
+                    Debe ingresar el stock!
+                </span>
+                <span class="text-danger" *ngIf="formProduct.get('stock')!.hasError('pattern') 
+                    && (formProduct.get('stock')!.dirty 
+                    || formProduct.get('stock')!.touched)">
+                    Debe ingresar una cantidad entera!
+                </span>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" [disabled]="formProduct.invalid" class="btn btn-primary btn-block">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
