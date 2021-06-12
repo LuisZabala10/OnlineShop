@@ -1,7 +1,8 @@
 export interface Product{
-    code : string;
+    code? : string;
     name : string;
+    description: string;
     price: number;
-    stock : number;
-    creationDate: string;
+    stock? : number;
+    creationDate?: string;
 }

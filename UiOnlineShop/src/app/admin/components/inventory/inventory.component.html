@@ -1,0 +1,37 @@
+<div class="card m-auto mt-4" style="width: 70%;">
+    <div class="card-header">
+        <h5 class="card-title">Entrada de producto</h5>
+    </div>
+    <div class="card-body">
+        <form class="row m-auto" [formGroup]="formInventory" (ngSubmit)="save()">
+            <div class="col-md-6 mb-4">
+                <label for="name" class="form-label">Producto</label>
+                <select class="form-select" formControlName="code">
+                    <option class="p-2" *ngFor="let product of products" value="{{product.code}}">{{product.name}}</option>
+                </select>
+                <span class="text-danger" *ngIf="formInventory.get('code')!.hasError('required') 
+                && (formInventory.get('code')!.dirty 
+                || formInventory.get('code')!.touched)">
+                Debe seleccionar un producto!
+            </span>
+            </div>
+            <div class="col-md-4 mb-4">
+                <label for="name" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" formControlName="stock" id="description">
+                <span class="text-danger" *ngIf="formInventory.get('stock')!.hasError('required') 
+                    && (formInventory.get('stock')!.dirty 
+                    || formInventory.get('stock')!.touched)">
+                    Debe ingresar una cantidad!
+                </span>
+                <span class="text-danger" *ngIf="formInventory.get('stock')!.hasError('pattern') 
+                    && (formInventory.get('stock')!.dirty 
+                    || formInventory.get('stock')!.touched)">
+                    Debe ingresar una cantidad entera!
+                </span>
+            </div>
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

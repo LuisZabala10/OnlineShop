@@ -29,7 +29,9 @@ namespace ApiOnlineShop
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
-                    builder => builder.AllowAnyOrigin());
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
             });
 
             services.AddControllers();

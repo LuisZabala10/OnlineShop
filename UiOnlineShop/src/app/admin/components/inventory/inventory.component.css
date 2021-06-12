@@ -1,0 +1,15 @@
+input.ng-touched.ng-invalid{
+    border-color:red ;
+  }
+  
+input.ng-valid{
+  border: 2px solid green;
+}
+
+.form-select.ng-touched.ng-invalid{
+  border-color:red ;
+}
+
+.form-select.ng-valid{
+border: 2px solid green;
+}

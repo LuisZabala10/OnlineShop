@@ -8,11 +8,13 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { FormProductComponent } from './components/form-product/form-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsComponent } from './components/products/products.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { InventoryComponent } from './components/inventory/inventory.component';
 
 
 
 @NgModule({
-  declarations: [NavComponent, FormProductComponent, ProductsComponent],
+  declarations: [NavComponent, FormProductComponent, ProductsComponent, EditProductComponent, InventoryComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
