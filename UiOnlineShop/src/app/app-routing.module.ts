@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './admin.guard';
 import { ClientsGuard } from './clients.guard';
+import { HomeComponent } from './home/home.component';
 import { LoginGuard } from './login.guard';
 import { LoginComponent } from './login/login.component';
 import { SaleComponent } from './sale/sale.component';
@@ -10,7 +11,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 const routes : Routes = [
     {
         path : '',
-        component : SaleComponent
+        component : HomeComponent
     },
     {
         path : 'tienda-venta-productos',

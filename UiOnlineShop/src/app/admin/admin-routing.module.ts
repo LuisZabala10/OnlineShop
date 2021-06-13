@@ -3,13 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { FormProductComponent } from './components/form-product/form-product.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
-import { NavComponent } from './components/nav/nav.component';
 import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
   {
     path: '',
-    component : NavComponent,
+    component : ProductsComponent,
     children:[
       {
         path : 'crear-producto',

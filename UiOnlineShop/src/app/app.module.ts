@@ -13,6 +13,7 @@ import { SaleComponent } from './sale/sale.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
     FooterComponent,
     SaleComponent,
     LoginComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

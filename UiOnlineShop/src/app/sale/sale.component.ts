@@ -72,6 +72,8 @@ export class SaleComponent implements OnInit {
         text: 'No hay existencia suficiente para realizar su compra',
         confirmButtonColor: '#0d6efd',
       })
+
+      return;
     }
 
     const total = price*amount;
