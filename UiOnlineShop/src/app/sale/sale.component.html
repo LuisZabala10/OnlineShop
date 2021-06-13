@@ -4,17 +4,16 @@
     <div class="card-header">
         <h5 class="card-title">Comprar productos</h5>
     </div>
-    <!--  (ngSubmit)="save()" -->
     <div class="card-body">
         <form class="row m-auto" [formGroup]="formSale" (ngSubmit)="onBuy()">
             <div class="col-md-5 mb-4">
                 <label for="name" class="form-label">Producto</label>
-                <select class="form-select" formControlName="code" (change)="onSelect($event)">
+                <select class="form-select" formControlName="productCode" (change)="onSelect($event)">
                     <option class="p-2" *ngFor="let product of products" value="{{product.code}}">{{product.name}}</option>
                 </select>
-                    <span class="text-danger" *ngIf="formSale.get('code')!.hasError('required') 
-                    && (formSale.get('code')!.dirty 
-                    || formSale.get('code')!.touched)">
+                    <span class="text-danger" *ngIf="formSale.get('productCode')!.hasError('required') 
+                    && (formSale.get('productCode')!.dirty 
+                    || formSale.get('productCode')!.touched)">
                     Debe seleccionar un producto!
                 </span>
             </div>
@@ -46,5 +45,3 @@
         </form>
     </div>
 </div>
-
-<!-- [disabled]="formInventory.invalid" -->

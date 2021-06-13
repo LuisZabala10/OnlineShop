@@ -3,7 +3,7 @@ import {Router,NavigationExtras} from '@angular/router'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import {ActivatedRoute, Params} from '@angular/router'
-import { Product } from 'src/app/product.model';
+import { Product } from '../../../models/product.model';
 import {ProductService} from '../../../services/product.service'
 import Swal from 'sweetalert2'
 

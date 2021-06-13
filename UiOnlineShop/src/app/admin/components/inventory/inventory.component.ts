@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Product } from 'src/app/product.model';
+import { Product } from '../../../models/product.model';
 import Swal from 'sweetalert2';
 
 import {ProductService} from '../../../services/product.service'
 import {InventoryService} from '../../../services/inventory.service'
-import { Inventory } from 'src/app/inventory.model';
+import { Inventory } from '../../../models/inventory.model';
 
 @Component({
   selector: 'app-inventory',

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { Sale } from '../sale.model';
+import { Sale } from '../models/sale.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SaleService {
 
-  private BASE_URL = 'http://localhost:4000/api/sales/'
+  private BASE_URL = 'http://localhost:4000/api/sale/'
 
   constructor(private httpClient: HttpClient) { }
 

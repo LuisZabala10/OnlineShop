@@ -1,10 +1,15 @@
+import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeDo from '@angular/common/locales/es-DO'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { Product } from '../product.model';
-import { Sale } from '../sale.model';
+import { Product } from '../models/product.model';
+import { Sale } from '../models/sale.model';
 import {ProductService} from '../services/product.service'
 import { SaleService } from '../services/sale.service'; 
+
+registerLocaleData(localeDo,'es-DO')
 
 
 @Component({
@@ -38,7 +43,6 @@ export class SaleComponent implements OnInit {
 
     this.productService.getProduct(code).subscribe(product =>{
 
-      console.log(product);
       this.formSale.get('stock')?.setValue(product.stock)
       this.formSale.get('price')?.setValue(product.price)
     })
@@ -47,7 +51,7 @@ export class SaleComponent implements OnInit {
 
   createFormGroup(){
     return new FormGroup({
-      code : new FormControl('',[Validators.required]),
+      productCode : new FormControl('',[Validators.required]),
       price : new FormControl(0,[Validators.required]),
       stock : new FormControl(0,[Validators.required]),
       total : new FormControl(0,[Validators.required]),
@@ -55,6 +59,7 @@ export class SaleComponent implements OnInit {
     })
   }
 
+  //confirma que la venta este correta y luego llama a la funcion que crea la venta
   onBuy(){
     const amount = this.formSale.get('amount')?.value;
     const price = this.formSale.get('price')?.value;
@@ -84,7 +89,7 @@ export class SaleComponent implements OnInit {
       if (result.isConfirmed) {
         
         const sale : Sale = {
-          code: this.formSale.get('code')?.value,
+          productCode: this.formSale.get('productCode')?.value,
           amount : this.formSale.get('amount')?.value
         }
         this.saveSale(sale,total)
@@ -92,14 +97,19 @@ export class SaleComponent implements OnInit {
     })
   }
 
-  saveSale(sale : Sale, total: Number){
+  //crea la venta
+  saveSale(sale : Sale, total: number){
+
+    const totalFormated = formatCurrency(total,'es-DO','RD');
+
     this.saleService.saveSale(sale).subscribe(result => {
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Inventario actualizado',
-        text: `Su compra hizo un total de ${total}`,
-        showConfirmButton: true
+        title: 'Compra realizada',
+        text: `Su compra hizo un total de ${totalFormated}`,
+        showConfirmButton: true,
+        confirmButtonColor: '#0d6efd',
       })
       this.formSale.reset();
     }, error=> {

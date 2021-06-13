@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Product } from 'src/app/product.model';
+import { Product } from '../../../models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2'
 
@@ -23,7 +23,27 @@ export class ProductsComponent implements OnInit{
 
   getProducts(){
     this.productService.getProducts()
-    .subscribe(products => this.products = products)
+    .subscribe(products => {
+      this.products = products
+    },error=>{
+      if(error.status === 0){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Algo salio mal!. Network error.`,
+          confirmButtonColor: '#0d6efd',
+        })
+      }
+      else{
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Algo salio mal!. \n${error.statusText}`,
+          confirmButtonColor: '#0d6efd',
+        })
+      }
+    })   
   }
 
   deleteProduct(code: string){

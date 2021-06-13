@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormGroup,FormBuilder, Validators, FormControl} from '@angular/forms'
-import { Product } from 'src/app/product.model';
+import { Product } from '../../../models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2'
 
