@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="card m-auto" style="width: 30%; margin-top: 100px !important;;">
+    <div class="card-header">
+        <h5 class="card-title">Seleccionar usuario</h5>
+    </div>
+    <div class="card-body">
+        <form class="row m-auto" [formGroup]="formLogin" (ngSubmit)="onLogin()">
+            <div class="col-md-12 mb-4">
+                <label for="name" class="form-label">Usuario</label>
+                <select class="form-select" formControlName="user">
+                    <option class="p-2" value="Administrador" >Administrador</option>
+                    <option class="p-2" value="Cliente" >Cliente</option>
+                </select>
+                    <span class="text-danger" *ngIf="formLogin.get('user')!.hasError('required') 
+                    && (formLogin.get('user')!.dirty 
+                    || formLogin.get('user')!.touched)">
+                    Debe seleccionar un usuario!
+                </span>
+            </div>
+            <div class="col-md-12 d-grid gap-2">
+                <button type="submit" [disabled]="formLogin.invalid" class="btn btn-primary d-block">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</div>
+

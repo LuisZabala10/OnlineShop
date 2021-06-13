@@ -17,6 +17,10 @@
           <a class="nav-link" routerLink="/admin">Admin</a>
         </li>
       </ul>
+      <div class="d-flex">
+        <a class="btn btn-outline-primary" routerLink="/ingresar" *ngIf="!logged">Ingresar</a>
+        <a class="btn btn-outline-primary" *ngIf="logged" (click)="logout()">Salir</a>
+      </div>
     </div>
   </div>
 </nav>
