@@ -27,7 +27,7 @@ namespace ApiOnlineShop.Controllers
 
                 if (productToUpdateStock == null) return NotFound();
 
-                if (productToUpdateStock.Stock <= 0) return BadRequest("The amount of stock must be greater than 0.");
+                if (inventory.Amount <= 0) return BadRequest("The amount of stock must be greater than 0.");
 
                 productToUpdateStock.Stock += inventory.Amount;
 
