@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+
+<div class="card m-auto mt-4" style="width: 70%;">
+    <div class="card-header">
+        <h5 class="card-title">Comprar productos</h5>
+    </div>
+    <!--  (ngSubmit)="save()" -->
+    <div class="card-body">
+        <form class="row m-auto" [formGroup]="formSale" (ngSubmit)="onBuy()">
+            <div class="col-md-5 mb-4">
+                <label for="name" class="form-label">Producto</label>
+                <select class="form-select" formControlName="code" (change)="onSelect($event)">
+                    <option class="p-2" *ngFor="let product of products" value="{{product.code}}">{{product.name}}</option>
+                </select>
+                    <span class="text-danger" *ngIf="formSale.get('code')!.hasError('required') 
+                    && (formSale.get('code')!.dirty 
+                    || formSale.get('code')!.touched)">
+                    Debe seleccionar un producto!
+                </span>
+            </div>
+            <div class="col-md-3 mb-4">
+                <label for="name" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="price" formControlName="price" readonly>
+            </div>
+            <div class="col-md-2 mb-4">
+                <label for="name" class="form-label">Existencia</label>
+                <input type="number" class="form-control" id="stock" formControlName="stock" readonly>
+            </div>
+            <div class="col-md-2 mb-4">
+                <label for="name" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="description" formControlName="amount">
+                <span class="text-danger" *ngIf="formSale.get('amount')!.hasError('required') 
+                    && (formSale.get('amount')!.dirty 
+                    || formSale.get('amount')!.touched)">
+                    Debe ingresar una cantidad!
+                </span>
+                <span class="text-danger" *ngIf="formSale.get('amount')!.hasError('pattern') 
+                    && (formSale.get('amount')!.dirty 
+                    || formSale.get('amount')!.touched)">
+                    Debe ingresar una cantidad entera o mayor a 0!
+                </span>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" [disabled]="formSale.invalid" class="btn btn-primary btn-block">Comprar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- [disabled]="formInventory.invalid" -->

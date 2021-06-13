@@ -41,7 +41,7 @@ export class InventoryComponent implements OnInit {
   save(){
 
     Swal.fire({
-      title: '¿Seguro de crear este producto?',
+      title: '¿Seguro de registrar este inventario?',
       text: "Confirme por favor!",
       icon: 'warning',
       showCancelButton: true,
