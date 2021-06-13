@@ -4,6 +4,7 @@ namespace ApiOnlineShop.Dtos
 {
     public class ProductForUpdateDto
     {
+        [Required]
         public string Code { get; set; }
         [Required(ErrorMessage = "name required.")]
         [MaxLength(80)]

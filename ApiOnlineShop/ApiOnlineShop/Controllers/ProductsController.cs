@@ -14,10 +14,12 @@ namespace ApiOnlineShop.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProduct _productRepository;
+        private readonly ILog _logRepository;
 
-        public ProductsController(IProduct productRepository)
+        public ProductsController(IProduct productRepository, ILog logRepository)
         {
             _productRepository = productRepository;
+            _logRepository = logRepository;
         }
 
         [HttpGet]
@@ -32,6 +34,15 @@ namespace ApiOnlineShop.Controllers
             }
             catch (Exception ex)
             {
+                var log = new Log
+                {
+                    ControllerName = nameof(InventoryController),
+                    ErrorMessage = ex.Message,
+                    Date = DateTime.Now
+                };
+
+                await _logRepository.LogToDataBase(log);
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "The server is not available to process this request. Try later");
             }
         }
@@ -50,6 +61,15 @@ namespace ApiOnlineShop.Controllers
             }
             catch (Exception ex)
             {
+                var log = new Log
+                {
+                    ControllerName = nameof(InventoryController),
+                    ErrorMessage = ex.Message,
+                    Date = DateTime.Now
+                };
+
+                await _logRepository.LogToDataBase(log);
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "The server is not available to process this request. Try later");
             }
         }
@@ -90,6 +110,16 @@ namespace ApiOnlineShop.Controllers
             }
             catch (Exception ex)
             {
+
+                var log = new Log
+                {
+                    ControllerName = nameof(InventoryController),
+                    ErrorMessage = ex.Message,
+                    Date = DateTime.Now
+                };
+
+                await _logRepository.LogToDataBase(log);
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "The server is not available to process this request. Try later");
             }
 
@@ -116,6 +146,15 @@ namespace ApiOnlineShop.Controllers
             }
             catch (Exception ex)
             {
+                var log = new Log
+                {
+                    ControllerName = nameof(InventoryController),
+                    ErrorMessage = ex.Message,
+                    Date = DateTime.Now
+                };
+
+                await _logRepository.LogToDataBase(log);
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "The server is not available to process this request. Try later");
             }
         }
@@ -136,6 +175,15 @@ namespace ApiOnlineShop.Controllers
 
             }catch(Exception ex)
             {
+                var log = new Log
+                {
+                    ControllerName = nameof(InventoryController),
+                    ErrorMessage = ex.Message,
+                    Date = DateTime.Now
+                };
+
+                await _logRepository.LogToDataBase(log);
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "The server is not available to process this request. Try later");
             }
         }

@@ -1,4 +1,5 @@
 ﻿using ApiOnlineShop.Dtos;
+using ApiOnlineShop.Entities;
 using ApiOnlineShop.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +13,12 @@ namespace ApiOnlineShop.Controllers
     public class SaleController : ControllerBase
     {
         private readonly IProduct _productRepository;
+        private readonly ILog _logRepository;
 
-        public SaleController(IProduct productRepository)
+        public SaleController(IProduct productRepository, ILog logRepository)
         {
             _productRepository = productRepository;
+            _logRepository = logRepository;
         }
 
         [HttpPost]
@@ -37,7 +40,15 @@ namespace ApiOnlineShop.Controllers
             }
             catch (Exception ex)
             {
-                //TODO: LOG EX
+                var log = new Log
+                {
+                    ControllerName = nameof(InventoryController),
+                    ErrorMessage = ex.Message,
+                    Date = DateTime.Now
+                };
+
+                await _logRepository.LogToDataBase(log);
+
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     "The server is not available to process this request. Try later");
             }

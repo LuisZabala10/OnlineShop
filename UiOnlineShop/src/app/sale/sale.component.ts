@@ -54,7 +54,6 @@ export class SaleComponent implements OnInit {
       productCode : new FormControl('',[Validators.required]),
       price : new FormControl(0,[Validators.required]),
       stock : new FormControl(0,[Validators.required]),
-      total : new FormControl(0,[Validators.required]),
       amount : new FormControl('',[Validators.required,Validators.min(0),Validators.pattern(this.amountPattern)])
     })
   }
@@ -101,7 +100,7 @@ export class SaleComponent implements OnInit {
 
   //crea la venta
   saveSale(sale : Sale, total: number){
-
+    
     const totalFormated = formatCurrency(total,'es-DO','RD');
 
     this.saleService.saveSale(sale).subscribe(result => {

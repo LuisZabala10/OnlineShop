@@ -25,6 +25,7 @@ namespace ApiOnlineShop
             services.AddDbContext<OnlineShopContext>(options => options.UseSqlServer(Configuration.GetConnectionString("onlineShop")));
 
             services.AddScoped<IProduct, ProductRepository>();
+            services.AddScoped<ILog, LogRepository>();
 
             services.AddCors(options =>
             {
