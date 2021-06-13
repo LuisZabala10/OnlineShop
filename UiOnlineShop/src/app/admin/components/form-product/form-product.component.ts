@@ -67,7 +67,7 @@ export class FormProductComponent {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: `Algo salio mal!. \n${error.statusText}`,
+              text: `Algo salio mal!. \n${error.error}`,
               confirmButtonColor: '#0d6efd',
             })
           }

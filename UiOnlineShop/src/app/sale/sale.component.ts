@@ -79,7 +79,7 @@ export class SaleComponent implements OnInit {
     const total = price*amount;
 
     Swal.fire({
-      title: '¿Seguro de registrar este inventario?',
+      title: '¿Seguro de ralizar esta compra?',
       text: "Confirme por favor!",
       icon: 'warning',
       showCancelButton: true,
@@ -128,7 +128,7 @@ export class SaleComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: `Algo salio mal!. \n${error.statusText}`,
+          text: `Algo salio mal!. \n${error.error}`,
           confirmButtonColor: '#0d6efd',
         })
       }

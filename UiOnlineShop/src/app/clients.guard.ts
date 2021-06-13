@@ -14,12 +14,11 @@ export class ClientsGuard implements CanActivate {
   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const currentUser = this.auth.getUserLogged();
     const isLogged = this.auth.isUserLogin();
-
-    console.log(isLogged + ' logg');
+    
     if(!isLogged){
       return this.router.navigate(['/ingresar']);
     }
-    if(currentUser == "Cliente"){
+    if(currentUser == "Cliente" || currentUser == "Administrador"){
       return true;
     }else{
       return this.router.navigate(['/sin-acceso']);

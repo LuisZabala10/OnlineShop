@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { HomeComponent } from './home/home.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     SaleComponent,
     LoginComponent,
     UnauthorizedComponent,
-    HomeComponent
+    HomeComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
