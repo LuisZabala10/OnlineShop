@@ -12,7 +12,7 @@ Debes tener instalado nodejs, angular cli en su version 12.x, net core 3.1 y sql
  
 -Abrir la carpeta **ApiOnlineShop** en visual studio code o visual studio y abrir el achivo **appsettings.json** modiificar la conexión de la base de datos estableciendo la conexión a tu servidor de base de datos luego compilar el proyecto y ejecutar.
 
--Abrir el caparpeta **UiOnlineShop** en cualquier editor de codigó y desde la terminar ejecutar el comando **ng serve** este comando instalara las despendencias necesarias y pondrá en marcha el proyecto el cual corre por defecto en http://localhost:4200/.
+-Abrir el caparpeta **UiOnlineShop** en cualquier editor de codigó y desde la terminar ejecutar el comando **ng serve** este comando pondrá en marcha el proyecto el cual corre por defecto en http://localhost:4200/.
 
 
 
